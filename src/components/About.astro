@@ -7,35 +7,32 @@ const today = new Date()
 const yearsOld = today.getFullYear() - 2004
 ---
 
-<section class="flex flex-col md:flex-row justify-between p-3 gap-4">
-  <div class="mb-4 w-full md:w-3/5 xl:w-4/5">
-    <header class="text-regular/60 text-lg mb-2">
-      <h1 class="text-regular font-bold text-3xl">Fabricio Futryk</h1>
-      <p>Back-end Developer</p>
-      <p>Cs.Student</p>
-    </header>
-    <div class="text-regular/60 text-xs mb-2">
-      <p>25/02 - {yearsOld} years old</p>
-      <p>Buenos Aires, Argentina</p>
-    </div>
-    <ul class="flex flex-row gap-2">
-      <li>
-        <a
-          href="https://github.com/ffutryk"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="My Github"><Github /></a
-        >
-      </li>
-      <li>
-        <a
-          href="https://www.linkedin.com/in/fabricio-futryk/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="My LinkedIn"><LinkedIn /></a
-        >
-      </li>
-    </ul>
+<div class="mb-4 w-full md:w-3/5 xl:w-4/5">
+  <header class="text-regular/60 text-lg mb-2">
+    <h1 class="text-regular font-bold text-3xl">Fabricio Futryk</h1>
+    <p>Back-end Developer</p>
+    <p>Cs.Student</p>
+  </header>
+  <div class="text-regular/60 text-xs mb-2">
+    <p>25/02 - {yearsOld} years old</p>
+    <p>Buenos Aires, Argentina</p>
   </div>
-  <TechStack />
-</section>
+  <ul class="flex flex-row gap-2">
+    <li>
+      <a
+        href="https://github.com/ffutryk"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="My Github"><Github /></a
+      >
+    </li>
+    <li>
+      <a
+        href="https://www.linkedin.com/in/fabricio-futryk/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="My LinkedIn"><LinkedIn /></a
+      >
+    </li>
+  </ul>
+</div>

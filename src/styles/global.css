@@ -7,7 +7,7 @@
 }
 
 .dark {
-  --text-base: oklch(0.87 0.0191 286);
+  --text-regular: oklch(0.87 0.0191 286);
 
   --bg-from: oklch(0.2 0.02 284.41);
   --bg-via: oklch(0.16 0.0126 284.91);
@@ -15,7 +15,7 @@
 }
 
 .light {
-  --text-base: oklch(0.14 0.009 285.14);
+  --text-regular: oklch(0.14 0.009 285.14);
 
   --bg-from: oklch(0.87 0.0191 286);
   --bg-via: oklch(0.86 0.022 285.93);
@@ -23,13 +23,13 @@
 }
 
 @theme inline {
-  --color-base: var(--text-base);
+  --color-regular: var(--text-regular);
 
   --color-accent: var(--accent);
 }
 
 body {
-  color: var(--text-base);
+  color: var(--text-regular);
   font-family: var(--font-primary);
   font-optical-sizing: auto;
 
@@ -39,4 +39,8 @@ body {
     var(--bg-via) 50%,
     var(--bg-to) 100%
   );
+}
+
+svg {
+  fill: var(--text-regular);
 }

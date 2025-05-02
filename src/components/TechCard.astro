@@ -1,0 +1,25 @@
+---
+interface Props {
+  name: string
+  description: string
+  color: string
+  icon: string
+}
+
+const { name, description, color, icon } = Astro.props
+---
+
+<article
+  class="w-[200px] flex gap-2 items-center px-2 py-1 rounded-xl border-2"
+  style={`
+    background-color: ${color}19;
+    border-color: ${color};
+    box-shadow: 0 2px 20px ${color}3F;
+  `}
+>
+  <Fragment set:html={icon} />
+  <div>
+    <h3 class="text-sm">{name}</h3>
+    <p class="text-xs">{description}</p>
+  </div>
+</article>

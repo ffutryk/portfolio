@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+:root {
+  --font-primary: "Montserrat", sans-serif;
+
+  --accent: oklch(0.7 0.1296 222.49);
+}
+
+.dark {
+  --text-base: oklch(0.87 0.0191 286);
+
+  --bg-from: oklch(0.2 0.02 284.41);
+  --bg-via: oklch(0.16 0.0126 284.91);
+  --bg-to: oklch(0.14 0.0068 285.45);
+}
+
+.light {
+  --text-base: oklch(0.14 0.009 285.14);
+
+  --bg-from: oklch(0.87 0.0191 286);
+  --bg-via: oklch(0.86 0.022 285.93);
+  --bg-to: oklch(0.82 0.0278 285.77);
+}
+
+@theme inline {
+  --color-base: var(--text-base);
+
+  --color-accent: var(--accent);
+}
+
+body {
+  color: var(--text-base);
+  font-family: var(--font-primary);
+  font-optical-sizing: auto;
+
+  background: linear-gradient(
+    135deg,
+    var(--bg-from) 0%,
+    var(--bg-via) 50%,
+    var(--bg-to) 100%
+  );
+}

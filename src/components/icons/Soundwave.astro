@@ -1,0 +1,87 @@
+---
+interface Props {
+  className?: string
+}
+
+const { className } = Astro.props
+---
+
+<svg
+  width="64"
+  height="32"
+  viewBox="0 0 64 32"
+  class={className}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <style>
+    .bar {
+      stroke: var(--accent);
+      stroke-width: 3;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 2px var(--accent));
+    }
+
+    .bar-group {
+      transform-box: fill-box;
+      transform-origin: center center;
+      animation: wave 1.6s ease-in-out infinite;
+    }
+
+    .bar-group:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .bar-group:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    .bar-group:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+    .bar-group:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+    .bar-group:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+    .bar-group:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: scaleY(0.6);
+      }
+
+      25% {
+        transform: scaleY(1.5);
+      }
+
+      50% {
+        transform: scaleY(0.6);
+      }
+
+      75% {
+        transform: scaleY(0.4);
+      }
+
+      100% {
+        transform: scaleY(0.6);
+      }
+    }
+  </style>
+
+  <g class="bar-group">
+    <line x1="4" y1="12" x2="4" y2="20" class="bar"></line>
+  </g>
+  <g class="bar-group">
+    <line x1="14" y1="6" x2="14" y2="26" class="bar"></line>
+  </g>
+  <g class="bar-group">
+    <line x1="24" y1="2" x2="24" y2="30" class="bar"></line>
+  </g>
+  <g class="bar-group">
+    <line x1="34" y1="6" x2="34" y2="26" class="bar"></line>
+  </g>
+  <g class="bar-group">
+    <line x1="44" y1="12" x2="44" y2="20" class="bar"></line>
+  </g>
+</svg>

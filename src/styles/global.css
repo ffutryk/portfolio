@@ -39,6 +39,7 @@ body {
     var(--bg-via) 50%,
     var(--bg-to) 100%
   );
+  background-attachment: fixed;
 }
 
 svg {

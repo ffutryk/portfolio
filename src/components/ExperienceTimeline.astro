@@ -6,7 +6,7 @@ const experiences: ComponentProps<typeof Experience>[] = [
   {
     title: "Specific Technical Teacher",
     description:
-      "I teach the course <b>“Project, Design, and Implementation of Computer Systems”</b> using a hands-on, project-based approach; guiding students through full-cycle development (requirements → deploy)",
+      "I teach the course <strong>“Project, Design, and Implementation of Computer Systems”</strong> using a hands-on, project-based approach; guiding students through full-cycle development (requirements → deploy)",
     from: new Date(2024, 5, 8),
   },
 ]
@@ -26,7 +26,7 @@ const sortExperiencesByRecency = (
 }
 ---
 
-<div class="w-full xl:w-2/5">
+<section class="w-full xl:w-2/5">
   <h2>Experience</h2>
   <ul class="ps-4 relative">
     {
@@ -37,7 +37,7 @@ const sortExperiencesByRecency = (
       ))
     }
   </ul>
-</div>
+</section>
 
 <style>
   ul:last-child::before {

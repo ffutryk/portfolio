@@ -1,0 +1,50 @@
+---
+import type { ComponentProps } from "astro/types"
+import Experience from "./Experience.astro"
+
+const experiences: ComponentProps<typeof Experience>[] = [
+  {
+    title: "Specific Technical Teacher",
+    description:
+      "I teach the course <b>“Project, Design, and Implementation of Computer Systems”</b> using a hands-on, project-based approach; guiding students through full-cycle development (requirements → deploy)",
+    from: new Date(2024, 5, 8),
+  },
+]
+
+const sortExperiencesByRecency = (
+  experiences: ComponentProps<typeof Experience>[]
+) => {
+  return [...experiences].sort((a, b) => {
+    const aIsOngoing = !a.to
+    const bIsOngoing = !b.to
+
+    if (aIsOngoing && !bIsOngoing) return -1
+    if (!aIsOngoing && bIsOngoing) return 1
+
+    return b.from.getTime() - a.from.getTime()
+  })
+}
+---
+
+<div class="w-full xl:w-2/5">
+  <h2>Experience</h2>
+  <ul class="ps-4 relative">
+    {
+      sortExperiencesByRecency(experiences).map((experience) => (
+        <li>
+          <Experience {...experience} />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  ul:last-child::before {
+    content: " ";
+    position: absolute;
+    height: 30%;
+    top: 100%;
+    border-left: 2px dashed var(--text-regular);
+  }
+</style>

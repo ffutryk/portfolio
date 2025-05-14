@@ -50,9 +50,15 @@ const stack: ComponentProps<typeof TechCard>[] = [
 `,
   },
 ]
+
+interface Props {
+  className?: string
+}
+
+const { className } = Astro.props
 ---
 
-<section class="items-end w-full pt-3">
+<section class={className}>
   <h2 class="text-regular/60 text-lg mb-2">TechStack</h2>
   <ul class="flex gap-2 flex-wrap justify-center sm:justify-normal">
     {

@@ -24,9 +24,15 @@ const sortExperiencesByRecency = (
     return b.from.getTime() - a.from.getTime()
   })
 }
+
+interface Props {
+  className?: string
+}
+
+const { className } = Astro.props
 ---
 
-<section class="w-full xl:w-2/5">
+<section class={className}>
   <h2 class="text-regular/60 text-lg mb-2">Experience</h2>
   <ul class="ps-4 relative">
     {

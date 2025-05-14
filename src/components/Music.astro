@@ -1,0 +1,157 @@
+---
+import Soundwave from "./icons/Soundwave.astro"
+
+const BAR_WIDTH = 200
+---
+
+<div
+  id="player"
+  class="flex flex-row w-[300px] h-[80px] rounded-2xl p-2 gap-3"
+  style="background-color: color-mix(in oklab, var(--bg-to) 50%, transparent);"
+>
+  <>
+    <img id="song-thumbnail" class="rounded-xl hidden" />
+    <div id="song-info" class="w-10/12 flex flex-row relative hidden">
+      <div class="w-full">
+        <p class="text-xs">
+          Listening to{" "}
+          <span
+            class="text-ellipsis font-bold text-sm"
+            id="song-title"></span>
+        </p>
+        <p class="uppercase text-xs" id="song-author"></p>
+      </div>
+      <Soundwave className="self-center -translate-y-1/4" />
+      <div
+        class="absolute h-1 bottom-0 -translate-y-1 rounded-full"
+        style={`width: ${BAR_WIDTH}px; background-color: var(--text-regular)`}
+      >
+      </div>
+      <div
+        id="progress-bar"
+        class={`absolute bg-accent h-1 bottom-0 -translate-y-1 rounded-full`}
+        style={`width: 0px; filter: drop-shadow(0 0 2px var(--accent));`}
+      >
+      </div>
+    </div>
+  </>
+
+  <div
+    id="silence"
+    class="w-full h-full flex items-center justify-center font-bold"
+  >
+    Embracing the silence
+    <div>
+      <span class="dot dot1">.</span>
+      <span class="dot dot2">.</span>
+      <span class="dot dot3">.</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dot {
+    opacity: 0;
+    animation: blink 1.5s infinite;
+  }
+
+  .dot1 {
+    animation-delay: 0s;
+  }
+
+  .dot2 {
+    animation-delay: 0.3s;
+  }
+
+  .dot3 {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  #progress-bar::after {
+    position: absolute;
+    content: " ";
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 100%;
+    transform: translate(50%, -25%);
+    right: 0;
+    filter: drop-shadow(0 0 2px var(--accent));
+  }
+</style>
+
+<script define:vars={{ BAR_WIDTH }}>
+  const $thumbnail = document.getElementById("song-thumbnail")
+  const $title = document.getElementById("song-title")
+  const $author = document.getElementById("song-author")
+  const $info = document.getElementById("song-info")
+  const $silence = document.getElementById("silence")
+  const $progress = document.getElementById("progress-bar")
+
+  let progressInterval
+  let retries = 0
+
+  async function fetchAndPlay() {
+    clearInterval(progressInterval)
+
+    // TODO: Fetch current playing track from spotify or youtube music
+    const data = null
+
+    if (!data || !data.title) {
+      return showSilenceThenFetch()
+    }
+
+    retries = 0
+
+    const { title, author, thumbnail, duration_ms, progress_ms } =
+      data
+
+    $thumbnail.src = thumbnail
+    $title.textContent = title
+    $author.textContent = author
+    $info.classList.remove("hidden")
+    $thumbnail.classList.remove("hidden")
+    $silence.classList.add("hidden")
+
+    let current = progress_ms
+    const tick = 1
+
+    progressInterval = setInterval(() => {
+      current += tick
+      const w =
+        Math.min(current, duration_ms) * (BAR_WIDTH / duration_ms)
+      $progress.style.width = `${w}px`
+
+      if (current >= duration_ms) {
+        clearInterval(progressInterval)
+        $progress.style.width = "0"
+        showSilenceThenFetch()
+      }
+    }, tick)
+  }
+
+  function showSilenceThenFetch() {
+    $info.classList.add("hidden")
+    $thumbnail.classList.add("hidden")
+    $silence.classList.remove("hidden")
+
+    retries++
+
+    if (retries <= 3) setTimeout(fetchAndPlay, 5000)
+    else if (retries <= 6) setTimeout(fetchAndPlay, 30000)
+  }
+
+  fetchAndPlay()
+</script>

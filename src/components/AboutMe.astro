@@ -6,6 +6,7 @@ import { profile } from '../data/profile';
 import { calculateAge } from '../utils/calculateAge';
 import { useTranslations } from '../i18n/utils';
 import type { ui } from '../i18n/ui';
+import { getMostRecentExperience } from '../utils/getMostRecentExperience';
 
 interface Props {
   lang: keyof typeof ui;
@@ -17,6 +18,7 @@ const birthdayMs = profile.birthday.getTime();
 const age = calculateAge(profile.birthday);
 const initialAgeSeconds = Math.floor((Date.now() - birthdayMs) / 1000);
 const t = useTranslations(lang);
+const job = getMostRecentExperience(lang);
 ---
 
 <Terminal windowTitle="about">
@@ -41,7 +43,7 @@ const t = useTranslations(lang);
     <Field label={t('about.education.label')}>{t('about.education.content')}</Field>
     <Field label={t('about.languages.label')}>{t('about.languages.content').join(',')}</Field>
     <Field label={t('about.skills.label')}>{profile.skills.join(', ')}</Field>
-    <Field label={t('about.job.label')} valueClass="text-accent">Placeholder</Field>
+    <Field label={t('about.job.label')} valueClass="text-accent">{job.content}</Field>
     <Field label={t('about.tldr.label')} class="mt-4">{t('about.tldr.content')}</Field>
   </div>
   <p>~ <span class="animate-blink">_</span></p>

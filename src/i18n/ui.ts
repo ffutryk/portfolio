@@ -1,3 +1,4 @@
+import type { ExperienceId } from '../data/experience';
 import { profile } from '../data/profile';
 
 export const defaultLang = 'en';
@@ -17,6 +18,7 @@ export type UIContent = {
   'about.job.label': string;
   'about.tldr.label': string;
   'about.tldr.content': string;
+  'experience': Record<ExperienceId, string>;
 };
 
 export const ui = {
@@ -34,7 +36,9 @@ export const ui = {
     'about.skills.label': 'Skills',
     'about.job.label': 'Job',
     'about.tldr.label': 'TL;DR',
-    'about.tldr.content':
-      'Computer Science student with practical experience developing REST APIs and two years leading technical teams. Self-taught learner with a proven ability to quickly adopt new languages and stacks.',
+    'about.tldr.content': 'Computer Science student with practical experience developing REST APIs and two years leading technical teams. Self-taught learner with a proven ability to quickly adopt new languages and stacks.',
+    'experience': {
+      'technical-instructor': 'Technical Instructor - Software Engineering',
+    },
   },
 } as const satisfies Record<string, UIContent>;

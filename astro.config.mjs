@@ -16,4 +16,8 @@ export default defineConfig({
       fallbacks: ['monospace'],
     },
   ],
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  }
 });

@@ -1,0 +1,60 @@
+---
+import { Font, Image } from 'astro:assets';
+import Terminal from '../components/Terminal.astro';
+import Field from '../components/Field.astro';
+import { profile } from '../data/profile';
+import { calculateAge } from '../utils/calculateAge';
+import { useTranslations } from '../i18n/utils';
+import type { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const birthdayMs = profile.birthday.getTime();
+const age = calculateAge(profile.birthday);
+const initialAgeSeconds = Math.floor((Date.now() - birthdayMs) / 1000);
+const t = useTranslations(lang);
+---
+
+<Terminal windowTitle="about">
+  <p>~ whoami</p>
+  <div class="space-y-0">
+    <Field label={t('about.name.label')}>{profile.name}</Field>
+
+    <Field label={t('about.picture.label')} labelClass="pt-1" align="end">
+      <Image
+        src={profile.picture}
+        alt={t('about.picture.alt')}
+        height={90}
+        width={90}
+        loading="eager"
+      />
+    </Field>
+
+    <Field label={t('about.age.label')}
+      >{age} (<span id="age-seconds">{initialAgeSeconds}</span>s)</Field
+    >
+    <Field label={t('about.location.label')}>{t('about.location.content')}</Field>
+    <Field label={t('about.education.label')}>{t('about.education.content')}</Field>
+    <Field label={t('about.languages.label')}>{t('about.languages.content').join(',')}</Field>
+    <Field label={t('about.skills.label')}>{profile.skills.join(', ')}</Field>
+    <Field label={t('about.job.label')} valueClass="text-accent">Placeholder</Field>
+    <Field label={t('about.tldr.label')} class="mt-4">{t('about.tldr.content')}</Field>
+  </div>
+  <p>~ <span class="animate-blink">_</span></p>
+</Terminal>
+
+<script define:vars={{ birthdayMs }}>
+  const ageSecondsEl = document.getElementById('age-seconds');
+
+  function tick() {
+    if (ageSecondsEl) {
+      ageSecondsEl.textContent = String(Math.floor((Date.now() - birthdayMs) / 1000));
+    }
+  }
+
+  setInterval(tick, 1000);
+</script>

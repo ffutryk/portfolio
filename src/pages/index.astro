@@ -4,6 +4,7 @@ import { Font } from 'astro:assets';
 import { getLangFromUrl } from '../i18n/utils';
 import AboutMe from '../components/AboutMe.astro';
 import { profile } from '../data/profile';
+import topographicMap from '../assets/images/topographic-map.png';
 
 const lang = getLangFromUrl(Astro.url);
 ---
@@ -24,5 +25,18 @@ const lang = getLangFromUrl(Astro.url);
         <AboutMe lang={lang} />
       </main>
     </div>
+
+    <style define:vars={{ bgUrl: `url(${topographicMap.src})` }}>
+      body {
+        color: white;
+        font-family: var(--font-jetbrains-mono);
+        min-height: 100vh;
+        background-color: var(--color-background);
+        background-image: var(--bgUrl);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
   </body>
 </html>

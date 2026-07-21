@@ -41,7 +41,7 @@ const job = getMostRecentExperience(lang);
     >
     <Field label={t('about.location.label')}>{t('about.location.content')}</Field>
     <Field label={t('about.education.label')}>{t('about.education.content')}</Field>
-    <Field label={t('about.languages.label')}>{t('about.languages.content').join(',')}</Field>
+    <Field label={t('about.languages.label')}>{t('about.languages.content').join(', ')}</Field>
     <Field label={t('about.skills.label')}>{profile.skills.join(', ')}</Field>
     <Field label={t('about.job.label')} valueClass="text-accent">{job.content}</Field>
     <Field label={t('about.tldr.label')} class="mt-4">{t('about.tldr.content')}</Field>

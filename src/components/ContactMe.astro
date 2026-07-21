@@ -1,0 +1,33 @@
+---
+import Terminal from '../components/Terminal.astro';
+import { linkedin, email, github } from '../data/contact';
+---
+
+<Terminal windowTitle="contact">
+  <p>~ ./contact</p>
+  <ul class="flex flex-row list-none justify-around mb-4 text-accent">
+    <li>
+      <a
+        class="hover:font-bold cursor-pointer"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={linkedin}
+      >
+        [LinkedIn]</a
+      >
+    </li>
+    <li>
+      <a class="hover:font-bold cursor-pointer" href={`mailto:${email}`}> [Email: {email}]</a>
+    </li>
+    <li>
+      <a
+        class="hover:font-bold cursor-pointer"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={github}
+      >
+        [GitHub]</a
+      >
+    </li>
+  </ul>
+</Terminal>

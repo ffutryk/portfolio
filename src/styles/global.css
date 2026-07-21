@@ -1,5 +1,18 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-accent: oklch(0.7658 0.1545 89.98);
+  --color-background: oklch(0.1867 0 0);
+  --color-terminal-header: oklch(0.1638 0 0);
+  --color-terminal-background: oklch(0.1448 0 0);
+}
+
 body {
   font-family: var(--font-jetbrains-mono);
+  min-height: 100vh;
+  background-color: var(--color-background);
+  background-image: url('./src/assets/images/topographic-map.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }

@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { Font } from 'astro:assets';
 import { getLangFromUrl } from '../i18n/utils';
 import AboutMe from '../components/AboutMe.astro';
+import ContactMe from '../components/ContactMe.astro';
 import { profile } from '../data/profile';
 import topographicMap from '../assets/images/topographic-map.png';
 
@@ -21,8 +22,9 @@ const lang = getLangFromUrl(Astro.url);
   </head>
   <body>
     <div class="min-h-screen flex items-center justify-center p-2">
-      <main class="w-full sm:max-w-lg md:max-w-1/2">
+      <main class="w-full sm:max-w-lg md:max-w-1/2 flex flex-col gap-4">
         <AboutMe lang={lang} />
+        <ContactMe />
       </main>
     </div>
 

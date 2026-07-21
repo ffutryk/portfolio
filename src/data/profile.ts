@@ -1,0 +1,21 @@
+export const profile = {
+  name: "Fabricio Mijail Futryk",
+  picture: "https://avatars.githubusercontent.com/u/183761761",
+  skills: [
+    'TypeScript',
+    'JavaScript',
+    'Java',
+    'Python',
+    'Node.js',
+    'Express',
+    'Java Spring Boot',
+    'PostgreSQL',
+    'MySQL',
+    'MongoDB',
+    'Neo4j',
+    'Git',
+    'Docker',
+    'Github Actions',
+  ],
+  birthday: new Date(2004, 1, 25)
+} as const;

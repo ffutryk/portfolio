@@ -21,7 +21,7 @@ const lang = getLangFromUrl(Astro.url);
     <title>{profile.name}</title>
   </head>
   <body>
-    <div class="min-h-screen flex items-center justify-center p-2">
+    <div class="min-h-dvh flex items-center justify-center p-2">
       <main class="w-full sm:max-w-lg md:max-w-1/2 flex flex-col gap-4">
         <AboutMe lang={lang} />
         <ContactMe />
@@ -32,7 +32,7 @@ const lang = getLangFromUrl(Astro.url);
       body {
         color: white;
         font-family: var(--font-jetbrains-mono);
-        min-height: 100vh;
+        min-height: 100dvh;
         background-color: var(--color-background);
         background-image: var(--bgUrl);
         background-repeat: no-repeat;

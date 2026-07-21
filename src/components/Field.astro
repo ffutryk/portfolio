@@ -1,0 +1,31 @@
+---
+interface Props {
+  label: string;
+  valueClass?: string;
+  labelClass?: string;
+  class?: string;
+  align?: 'start' | 'center' | 'end';
+}
+
+const {
+  label,
+  valueClass = '',
+  labelClass = '',
+  class: className = '',
+  align = 'start',
+} = Astro.props;
+
+const alignClass =
+  align === 'end' ? 'items-end' : align === 'center' ? 'items-center' : 'items-start';
+---
+
+<div class={`flex ${alignClass} ${className}`}>
+  <span
+    class={`w-20 sm:w-28 shrink-0 text-right pr-3 font-thin text-accent drop-shadow-[0_0_1px_currentColor] ${labelClass}`}
+  >
+    {label}:
+  </span>
+  <span class={`flex-1 ${valueClass}`}>
+    <slot />
+  </span>
+</div>

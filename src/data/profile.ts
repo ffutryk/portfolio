@@ -1,6 +1,6 @@
 export const profile = {
-  name: "Fabricio Mijail Futryk",
-  picture: "https://avatars.githubusercontent.com/u/183761761",
+  name: 'Fabricio Mijail Futryk',
+  picture: 'https://avatars.githubusercontent.com/u/183761761',
   skills: [
     'TypeScript',
     'JavaScript',
@@ -17,5 +17,5 @@ export const profile = {
     'Docker',
     'Github Actions',
   ],
-  birthday: new Date(2004, 1, 25)
+  birthday: new Date(2004, 1, 25),
 } as const;

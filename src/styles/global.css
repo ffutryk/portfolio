@@ -9,17 +9,6 @@
   --animate-blink: blink 1s step-end infinite;
 }
 
-body {
-  color: white;
-  font-family: var(--font-jetbrains-mono);
-  min-height: 100vh;
-  background-color: var(--color-background);
-  background-image: url('./src/assets/images/topographic-map.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
 @keyframes blink {
   0%,
   50% {

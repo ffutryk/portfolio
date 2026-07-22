@@ -1,5 +1,6 @@
 import type { ExperienceId } from '../data/experience';
 import { profile } from '../data/profile';
+import type { ProjectId } from '../data/projects';
 
 export const defaultLang = 'en';
 
@@ -18,7 +19,9 @@ export type UIContent = {
   'about.job.label': string;
   'about.tldr.label': string;
   'about.tldr.content': string;
-  'experience': Record<ExperienceId, string>;
+  experience: Record<ExperienceId, string>;
+  'experience.now.label': string;
+  projects: Record<ProjectId, string>;
 };
 
 export const ui = {
@@ -36,9 +39,16 @@ export const ui = {
     'about.skills.label': 'Skills',
     'about.job.label': 'Job',
     'about.tldr.label': 'TL;DR',
-    'about.tldr.content': 'Computer Science student with practical experience developing REST APIs and two years leading technical teams. Self-taught learner with a proven ability to quickly adopt new languages and stacks.',
-    'experience': {
+    'about.tldr.content':
+      'Computer Science student with practical experience developing REST APIs and two years leading technical teams. Self-taught learner with a proven ability to quickly adopt new languages and stacks.',
+    experience: {
       'technical-instructor': 'Technical Instructor - Software Engineering',
+    },
+    'experience.now.label': 'Now',
+    projects: {
+      coffeestock: 'Web application for inventory and sales management',
+      epersgeist: 'Polyglot persistence and predictive models',
+      kronii: 'AI conversational assistant backend',
     },
   },
 } as const satisfies Record<string, UIContent>;

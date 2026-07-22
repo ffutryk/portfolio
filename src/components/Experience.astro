@@ -1,0 +1,37 @@
+---
+import Terminal from '../components/Terminal.astro';
+import { useTranslations } from '../i18n/utils';
+import { experience } from '../data/experience';
+import type { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const t = useTranslations(lang);
+---
+
+<Terminal windowTitle="experience">
+  <p class="mb-2">~ tac ./experience</p>
+  <ul class="marker:content-['*'] ml-6">
+    {
+      experience.map((exp) => {
+        const color = exp.to ? '' : 'text-accent';
+        const job = t('experience')[exp.id];
+        const to = exp.to ? exp.to : t('experience.now.label');
+
+        return (
+          <li class={`pl-2 ${color}`}>
+            {job}{' '}
+            <span class="text-white">
+              ({exp.from} - {to})
+            </span>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <p>~ <span class="animate-blink">_</span></p>
+</Terminal>

@@ -1,0 +1,18 @@
+---
+import Terminal from '../components/Terminal.astro';
+
+const year = new Date().getFullYear();
+---
+
+<Terminal windowTitle="footer">
+  <footer class="mb-2">
+    <p>~ cat ./footer</p>
+    <p class="ml-4">
+      Fabricio Futryk {year} @ <a href="https://ffutryk.com">ffutryk.com</a> &gt; <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/ffutryk/portfolio/blob/main/LICENSE">MIT License</a
+      >
+    </p>
+  </footer>
+</Terminal>

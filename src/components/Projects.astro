@@ -1,0 +1,54 @@
+---
+import Terminal from '../components/Terminal.astro';
+import { useTranslations } from '../i18n/utils';
+import { projects } from '../data/projects';
+import type { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const t = useTranslations(lang);
+---
+
+<Terminal windowTitle="projects">
+  <p class="mb-2">~ ./projects --list --stack</p>
+  <ul class="marker:content-['*'] ml-6">
+    {
+      projects.map((project) => {
+        const desc = t('projects')[project.id];
+        return (
+          <li class="pl-2 mb-2">
+            <div class="flex flex-row justify-between">
+              <h3 class="font-normal">{project.name}</h3>
+              <div class="flex flex-row gap-4">
+                {project.github && (
+                  <a
+                    class="hover:font-bold text-accent"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={project.github}
+                    aria-label={`${project.name} on GitHub`}
+                  >
+                    [GitHub]
+                  </a>
+                )}
+                <time datetime={String(project.year)}>({project.year})</time>
+              </div>
+            </div>
+            <p class="text-gray-400">{desc}</p>
+            {project.stack && (
+              <p class="text-xs text-gray-400">
+                {'> '}
+                {project.stack.join(' · ')}
+              </p>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+  <p>~ <span class="animate-blink">_</span></p>
+</Terminal>

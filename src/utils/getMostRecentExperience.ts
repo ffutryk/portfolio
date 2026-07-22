@@ -17,5 +17,8 @@ export function getMostRecentExperience(lang: keyof typeof ui = defaultLang): Re
     return bEnd - aEnd || b.from - a.from;
   })[0];
 
-  return { ...mostRecent, content: labels[mostRecent.id] ?? ui[defaultLang].experience[mostRecent.id] };
+  return {
+    ...mostRecent,
+    content: labels[mostRecent.id] ?? ui[defaultLang].experience[mostRecent.id],
+  };
 }
